@@ -6,8 +6,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SMIT - Quiz Application</title>
 
+  <!-- <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="885826283205-63as6j41v9fkfvs089klahmgsp15proo.apps.googleusercontent.com"> -->
+
+  <!-- Include the Google Sign-In API library -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="885826283205-63as6j41v9fkfvs089klahmgsp15proo.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="885826283205-63as6j41v9fkfvs089klahmgsp15proo.apps.googleusercontent.com">
+  <script>
+    var auth2;
+
+    // Initialize the Google Sign-In API
+    function initGoogleSignIn() {
+      gapi.load('auth2', function () {
+        auth2 = gapi.auth2.init({
+          client_id: '885826283205-63as6j41v9fkfvs089klahmgsp15proo.apps.googleusercontent.com',
+          // Specify any additional scopes needed
+          scope: 'email profile openid'
+        });
+      });
+    }
+
+    // Function to handle sign-in
+    function signIn() {
+      if (auth2) {
+        auth2.signIn().then(function (googleUser) {
+          // Handle successful sign-in
+          var profile = googleUser.getBasicProfile();
+          console.log('Name: ' + profile.getName());
+          console.log('Email: ' + profile.getEmail());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('ID: ' + profile.getId());
+          // Redirect to home.html
+          window.location.href = 'home.html';
+        }).catch(function (error) {
+          // Handle sign-in errors
+          console.error('Sign-in error:', error);
+        });
+      } else {
+        console.error('Google API client library not loaded.');
+      }
+    }
+
+    // Call the initialization function when the window has finished loading
+    window.onload = function () {
+      initGoogleSignIn();
+    };
+  </script>
+
+
+
+
 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -53,7 +102,7 @@
 
     <button onclick="signIn()"> <img src="" alt="">Sign in with Google</button>
 
-      <!-- <audio controls autoplay loop class="m-auto lg:w-1/5 mt-4">
+    <!-- <audio controls autoplay loop class="m-auto lg:w-1/5 mt-4">
         <source src="./mishary-rashid-alafasy-001-muslimcentral.com.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
 
@@ -84,7 +133,7 @@
   </footer>
 
 
-<script src="app.js"></script>
+  <!-- <script src="app.js"></script> -->
 </body>
 
 </html>

@@ -24,6 +24,7 @@ function signIn() {
         console.log("Email: " + profile.getEmail());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("ID: " + profile.getId());
+        window.location.href = './home.html';
         // You can now send this information to your server for further processing
       })
       .catch(function (error) {

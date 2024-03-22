@@ -5,7 +5,7 @@ function initGoogleSignIn() {
   gapi.load("auth2", function () {
     auth2 = gapi.auth2.init({
       client_id:
-        "835041124290-t05dh4jfoojvdgulc7a2rpl6bhadp0ve.apps.googleusercontent.com",
+        "885826283205-63as6j41v9fkfvs089klahmgsp15proo.apps.googleusercontent.com",
       // Specify any additional scopes needed
       scope: "email profile openid",
     });

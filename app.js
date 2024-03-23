@@ -57,56 +57,44 @@ var auth2;
 // Initialize the Google Sign-In API
 function initGoogleSignIn() {
   gapi.load("auth2", function () {
-    auth2 = gapi.auth2
+    gapi.auth2
       .init({
-        client_id:
-          "324013198871-dqagmvuf3pqcaqgoi9l75l7kmi325cs9.apps.googleusercontent.com",
-        // Specify any additional scopes needed
+        client_id: "your_client_id",
         scope: "email profile openid",
       })
       .then(function () {
-        // Call function to handle sign-in after initialization
-        handleSignIn();
+        auth2 = gapi.auth2.getAuthInstance();
+        console.log("Google Auth Initialized");
+      })
+      .catch(function (error) {
+        console.error("Error initializing Google Auth:", error);
       });
   });
 }
 
 // Function to handle sign-in
-function handleSignIn() {
-  if (auth2.isSignedIn.get()) {
-    // User is already signed in, display user information
-    displayUserInfo();
-  } else {
-    // Attach click event listener to sign-in button
-    document.querySelector("#signInButton").addEventListener("click", signIn);
-  }
-}
-
-// Function to display user information
-function displayUserInfo() {
-  var googleUser = auth2.currentUser.get();
-  var profile = googleUser.getBasicProfile();
-  console.log("Name: " + profile.getName());
-  console.log("Email: " + profile.getEmail());
-  console.log("Image URL: " + profile.getImageUrl());
-  console.log("ID: " + profile.getId());
-  userLoginName.innerHTML = profile.getName();
-  userWelcome.innerHTML = profile.getName();
-  userImage.src = profile.getImageUrl();
-}
-
-// Function to handle sign-in
 function signIn() {
-  auth2
-    .signIn()
-    .then(function () {
-      // User successfully signed in, display user information
-      displayUserInfo();
-    })
-    .catch(function (error) {
-      // Handle sign-in errors
-      console.error("Sign-in error:", error);
-    });
+  if (auth2) {
+    auth2
+      .signIn()
+      .then(function (googleUser) {
+        // Handle successful sign-in
+        var profile = googleUser.getBasicProfile();
+        console.log("Name: " + profile.getName());
+        console.log("Email: " + profile.getEmail());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("ID: " + profile.getId());
+        userLoginName.innerHTML = profile.getName();
+        userWelcome.innerHTML = profile.getName();
+        userImage.src = profile.getImageUrl();
+      })
+      .catch(function (error) {
+        // Handle sign-in errors
+        console.error("Sign-in error:", error);
+      });
+  } else {
+    console.error("Google API client library not loaded.");
+  }
 }
 
 // Call the initialization function when the window has finished loading

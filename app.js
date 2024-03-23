@@ -1,49 +1,99 @@
-let userLoginName = document.querySelector("#userLoginName");
-let userWelcome = document.querySelector("#userWelcome");
-let userImage = document.querySelector("#userImage");
+// let userLoginName = document.querySelector("#userLoginName");
+// let userWelcome = document.querySelector("#userWelcome");
+// let userImage = document.querySelector("#userImage");
 
-var auth2;
+// var auth2;
 
-// Initialize the Google Sign-In API
-function initGoogleSignIn() {
-  gapi.load("auth2", function () {
-    auth2 = gapi.auth2.init({
-      client_id:
-        "324013198871-dqagmvuf3pqcaqgoi9l75l7kmi325cs9.apps.googleusercontent.com",
-      // Specify any additional scopes needed
-      scope: "email profile openid",
-    });
-  });
-}
+// // Initialize the Google Sign-In API
+// function initGoogleSignIn() {
+//   gapi.load("auth2", function () {
+//     auth2 = gapi.auth2.init({
+//       client_id:
+//         "324013198871-dqagmvuf3pqcaqgoi9l75l7kmi325cs9.apps.googleusercontent.com",
+//       // Specify any additional scopes needed
+//       scope: "email profile openid",
+//     });
+//   });
+// }
 
-// Function to handle sign-in
-function signIn() {
-  if (auth2) {
-    auth2
-      .signIn()
-      .then(function (googleUser) {
-        // Handle successful sign-in
-        var profile = googleUser.getBasicProfile();
-        console.log("Name: " + profile.getName());
-        console.log("Email: " + profile.getEmail());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("ID: " + profile.getId());
-        userLoginName.innerHTML = profile.getName();
-        userWelcome.innerHTML = profile.getName();
-        userImage.src = profile.getImageUrl();
-        // Redirect to home.html
-        // window.location.href = "home.html";
-      })
-      .catch(function (error) {
-        // Handle sign-in errors
-        console.error("Sign-in error:", error);
+// // Function to handle sign-in
+// function signIn() {
+//   if (auth2) {
+//     auth2
+//       .signIn()
+//       .then(function (googleUser) {
+//         // Handle successful sign-in
+//         var profile = googleUser.getBasicProfile();
+//         console.log("Name: " + profile.getName());
+//         console.log("Email: " + profile.getEmail());
+//         console.log("Image URL: " + profile.getImageUrl());
+//         console.log("ID: " + profile.getId());
+//         userLoginName.innerHTML = profile.getName();
+//         userWelcome.innerHTML = profile.getName();
+//         userImage.src = profile.getImageUrl();
+//         // Redirect to home.html
+//         // window.location.href = "home.html";
+//       })
+//       .catch(function (error) {
+//         // Handle sign-in errors
+//         console.error("Sign-in error:", error);
+//       });
+//   } else {
+//     console.error("Google API client library not loaded.");
+//   }
+// }
+
+// // Call the initialization function when the window has finished loading
+// window.onload = function () {
+//   initGoogleSignIn();
+// };
+
+document.addEventListener("DOMContentLoaded", function () {
+  var userLoginName = document.querySelector("#userLoginName");
+  var userWelcome = document.querySelector("#userWelcome");
+  var userImage = document.querySelector("#userImage");
+
+  var auth2;
+
+  // Initialize the Google Sign-In API
+  function initGoogleSignIn() {
+    gapi.load("auth2", function () {
+      auth2 = gapi.auth2.init({
+        client_id:
+          "324013198871-dqagmvuf3pqcaqgoi9l75l7kmi325cs9.apps.googleusercontent.com",
+        // Specify any additional scopes needed
+        scope: "email profile openid",
       });
-  } else {
-    console.error("Google API client library not loaded.");
+    });
   }
-}
 
-// Call the initialization function when the window has finished loading
-window.onload = function () {
+  // Function to handle sign-in
+  function signIn() {
+    if (auth2) {
+      auth2
+        .signIn()
+        .then(function (googleUser) {
+          // Handle successful sign-in
+          var profile = googleUser.getBasicProfile();
+          console.log("Name: " + profile.getName());
+          console.log("Email: " + profile.getEmail());
+          console.log("Image URL: " + profile.getImageUrl());
+          console.log("ID: " + profile.getId());
+          userLoginName.innerHTML = profile.getName();
+          userWelcome.innerHTML = profile.getName();
+          userImage.src = profile.getImageUrl();
+          // Redirect to home.html
+          // window.location.href = "home.html";
+        })
+        .catch(function (error) {
+          // Handle sign-in errors
+          console.error("Sign-in error:", error);
+        });
+    } else {
+      console.error("Google API client library not loaded.");
+    }
+  }
+
+  // Call the initialization function when the window has finished loading
   initGoogleSignIn();
-};
+});

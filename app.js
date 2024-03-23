@@ -1,4 +1,5 @@
-let userName = document.querySelector("#userName");
+let userLoginName = document.querySelector("#userLoginName");
+let userWelcome = document.querySelector("#userWelcome");
 let userImage = document.querySelector("#userImage");
 
 var auth2;
@@ -27,8 +28,9 @@ function signIn() {
         console.log("Email: " + profile.getEmail());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("ID: " + profile.getId());
-        userName.innerHTML = profile.getName();
-        userImage.innerHTML = profile.getImageUrl();
+        userLoginName.innerHTML = profile.getName();
+        userWelcome.innerHTML = profile.getName();
+        userImage.src = profile.getImageUrl();
         // Redirect to home.html
         // window.location.href = "home.html";
       })

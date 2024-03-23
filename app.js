@@ -32,7 +32,7 @@ function signIn() {
         userWelcome.innerHTML = profile.getName();
         userImage.src = profile.getImageUrl();
         // Redirect to home.html
-        window.location.href = "home.html";
+        // window.location.href = "home.html";
       })
       .catch(function (error) {
         // Handle sign-in errors

@@ -25,7 +25,7 @@ function signIn() {
         console.log("Image URL: " + profile.getImageUrl());
         console.log("ID: " + profile.getId());
         // Redirect to home.html
-        window.location.href = "home.html";
+        // window.location.href = "home.html";
       })
       .catch(function (error) {
         // Handle sign-in errors

@@ -59,7 +59,7 @@ function initGoogleSignIn() {
   gapi.load("auth2", function () {
     gapi.auth2
       .init({
-        client_id: "your_client_id",
+        client_id: "324013198871-dqagmvuf3pqcaqgoi9l75l7kmi325cs9.apps.googleusercontent.com",
         scope: "email profile openid",
       })
       .then(function () {

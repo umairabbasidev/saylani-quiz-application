@@ -1,64 +1,9 @@
-// let quiztable = document.querySelector("#quiztable")
+let userLoginName = document.querySelector("#userLoginName");
+let userImage = document.querySelector("#userImage");
+let userWelcome = document.querySelector("#userWelcome");
 
-
-// let quizTableData = [
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-//   {
-//     techName: "Python",
-//     subject: "1 Subject",
-//     btn: "Join",
-//   },
-// ];
-
-
-
-
-
-
-// quizTableData.map(({techName,subject,btn})=>{
-// return quiztable
-
-// })
-
-// // console.log("hell")
-
-// console.log(quiztable)
+let getData = JSON.parse(localStorage.getItem("userDetails"));
+console.log(getData.name);
+userLoginName.innerHTML = getData.name;
+userImage.src = getData.image;
+userWelcome.innerHTML += getData.name + "👋";

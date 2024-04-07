@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>signup</title>
+ <!-- <link rel="stylesheet" href="style.css"> -->
+ <script src="https://cdn.tailwindcss.com"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+ <div class="bg-white shadow-2xl w-fit  p-16 my-20 text-center  mx-auto ">
+  <h1 class="mb-10 text-2xl text-purple-700 font-extrabold">Sign in</h1>
+  <div class="flex gap-2 items-center bg-gray-300 w-fit p-2 rounded mx-auto ">
+   <i class="fa-solid fa-user "></i>
+   <input type="text" placeholder="Enter your Full Name" required id="name"
+    class="w-fit b-0 outline-0 bg-gray-300 text-black  ">
+  </div>
+  <div class="flex gap-2 items-center   bg-gray-300 w-fit p-2 rounded my-2 mx-auto">
+   <i class="fa-regular fa-envelope"></i>
+   <input type="email" placeholder="Enter your Email" required id="email" class="bg-gray-300 text-black">
+  </div>
+  <div class="flex gap-2 items-center   bg-gray-300 w-fit p-2 rounded my-2 mx-auto">
+   <i class="fa-solid fa-lock"></i>
+   <input type="password" placeholder="Enter your Password" required id="password" class="bg-gray-300 text-black">
+  </div>
+  <!-- <div class="flex gap-2 items-center   bg-gray-300 w-fit p-2 rounded my-2 mx-auto">
+   <i class="fa-solid fa-lock"></i>
+
+   <input type="password" placeholder="Enter your Re-Password" required id="re-password" class="bg-gray-300 text-black">
+  </div> -->
+  <!-- <div class="flex gap-2 items-center  bg-gray-300 w-fit p-2 rounded mx-auto">
+   <i class="fa-solid fa-image"></i>
+   <input type="url" placeholder="Enter your Image Url" required id="image" class="bg-gray-300 text-black">
+  </div> -->
+  <div class="relative">
+   <button  class="bg-purple-800 rounded-full p-2 px-8 text-white   left-0  mt-2  absolute" id="signinBtn" onclick="myFunction()">Sign in</button>
+  </div>
+ </div>
+ <script src="signin.js"></script>
+</body>
+
+</html>
